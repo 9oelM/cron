@@ -1,0 +1,12 @@
+on:
+  schedule:
+    - cron: '15 * * * *'
+
+jobs:
+  test_schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if there's an update and send message if there is 
+        run: |
+          curl https://www.coronavirus.gov.hk/pdf/designated-hotel-list-v8_en.pdf -o v8.pdf
+
