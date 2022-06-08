@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test_schedule:
+  check_designated_hotel_updates:
     runs-on: ubuntu-latest
     steps:
       - name: Check if there's an update and send message if there is 
