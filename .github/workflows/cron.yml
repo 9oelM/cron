@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '15 * * * *'
+    - cron: '*/10 * * * *'
 
 jobs:
   test_schedule:
@@ -11,7 +11,7 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
-          status_code=$(curl -s -o designated_hotel_list_v8.pdf -w "%{http_code}" https://www.coronavirus.gov.hk/pdf/designated-hotel-list-v8_en.pdf)
+          status_code=$(curl -s -o designated_hotel_list_v8.pdf -w "%{http_code}" https://www.coronavirus.gov.hk/pdf/designated-hotel-list-v7_en.pdf)
           if [[ "$status_code" != "404" ]]; then
             curl -F document=@designated_hotel_list_v8.pdf "https://api.telegram.org/bot${BOT_TOKEN}/sendDocument?chat_id=${CHAT_ID}"
           fi
